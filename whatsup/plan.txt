@@ -1,0 +1,6 @@
+Server maintains a channel for each client, any message for that client will be put on that channel
+which is being listened and items on that channel are sent to the connection.
+Server also has a map from client name to its Client struct (channel and connection)
+Client after sending CONNECT starts an endless loop which breaks only when the client has sent the DISCONNECT to server.
+In the loop clients waits on reading from stdin. Input at stdin should be given as "<action> <username> <body>", where <username> and <body> can be empty string.
+After reading from stdin, client parses and sends the action to the server.
